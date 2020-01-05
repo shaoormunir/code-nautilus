@@ -33,9 +33,11 @@ mkdir -p ~/.local/share/nautilus-python/extensions
 rm -f ~/.local/share/nautilus-python/extensions/VSCodeExtension.py
 rm -f ~/.local/share/nautilus-python/extensions/code-nautilus.py
 
-# Download and install the extension
-echo "Downloading newest version..."
-wget --show-progress -q -O ~/.local/share/nautilus-python/extensions/code-nautilus.py https://raw.githubusercontent.com/cra0zy/code-nautilus/master/code-nautilus.py
+# installing the extension to nautilus folder
+cp code-nautilus.py ~/.local/share/nautilus-python/extensions/code-nautilus.py
+# # Download and install the extension
+# echo "Downloading newest version..."
+# wget --show-progress -q -O ~/.local/share/nautilus-python/extensions/code-nautilus.py https://raw.githubusercontent.com/cra0zy/code-nautilus/master/code-nautilus.py
 
 # Restart nautilus
 echo "Restarting nautilus..."
