@@ -21,6 +21,8 @@ VSCODENAME = 'Code'
 # always create new window?
 NEWWINDOW = False
 
+# Nautilus path
+NAUTILUS_PATH="@NAUTILUS_PATH@"
 
 class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
 
@@ -54,11 +56,11 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def get_background_items(self, window, file):
         if file.is_directory() and file.get_uri_scheme() == "file":
-			if os.path.exists(NAUTILUS_PATH):
+            if os.path.exists(NAUTILUS_PATH):
                 item = Nautilus.MenuItem(
                     name='VSCodeOpenBackground',
                     label='Open in ' + VSCODENAME,
                     tip='Opens VSCode in the current directory')
                     item.connect('activate', self.launch_vscode, [file])
-                    
+
         return [item]
