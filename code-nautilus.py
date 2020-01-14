@@ -5,12 +5,12 @@
 #
 # This script was written by cra0zy and is released to the public domain
 
-import os
-from subprocess import call
-from gi.repository import Nautilus, GObject
 from gi import require_version
 require_version('Gtk', '3.0')
 require_version('Nautilus', '3.0')
+from gi.repository import Nautilus, GObject
+from subprocess import call
+import os
 
 # path to vscode
 VSCODE = 'code'
@@ -20,9 +20,6 @@ VSCODENAME = 'Code'
 
 # always create new window?
 NEWWINDOW = False
-
-# Nautilus path
-NAUTILUS_PATH = "@NAUTILUS_PATH@"
 
 
 class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
@@ -56,12 +53,11 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
         return [item]
 
     def get_background_items(self, window, file_):
-        if file_.is_directory() and file_.get_uri_scheme() == "file":
-            if os.path.exists(NAUTILUS_PATH):
-                item = Nautilus.MenuItem(
-                    name='VSCodeOpenBackground',
-                    label='Open in ' + VSCODENAME,
-                    tip='Opens VSCode in the current directory')
-                item.connect('activate', self.launch_vscode, [file_])
+        item = Nautilus.MenuItem(
+            name='VSCodeOpenBackground',
+            label='Open in ' + VSCODENAME,
+            tip='Opens VSCode in the current directory'
+        )
+        item.connect('activate', self.launch_vscode, [file_])
 
         return [item]
