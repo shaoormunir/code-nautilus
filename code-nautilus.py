@@ -62,5 +62,5 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
                     label='Open in ' + VSCODENAME,
                     tip='Opens VSCode in the current directory')
                     item.connect('activate', self.launch_vscode, [file])
-
+                    
         return [item]
