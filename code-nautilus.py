@@ -5,12 +5,12 @@
 #
 # This script was written by cra0zy and is released to the public domain
 
+import os
+from subprocess import call
+from gi.repository import Nautilus, GObject
 from gi import require_version
 require_version('Gtk', '3.0')
 require_version('Nautilus', '3.0')
-from gi.repository import Nautilus, GObject
-from subprocess import call
-import os
 
 # path to vscode
 VSCODE = 'code'
